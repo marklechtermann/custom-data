@@ -1,12 +1,11 @@
-name: release
+name: Release
 
 on:
   workflow_dispatch:
-      - "master"
 
 jobs:
-  pre-release:
-    name: "Pre Release"
+  release:
+    name: "Release"
     runs-on: "ubuntu-latest"
 
     steps:
