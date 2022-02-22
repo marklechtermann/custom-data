@@ -1,5 +1,4 @@
----
-name: "prelease"
+name: prelease
 
 on:
   workflow_dispatch:
