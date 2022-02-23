@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Check code format (editorconfig)
+        run: dotnet format --verify-no-changes
+      - name: Build (Release)
+        run: dotnet build --no-restore -c Release
+      - name: Test (Release)
+        run: dotnet test -c Release --no-build --verbosity normal
