@@ -19,7 +19,9 @@ jobs:
         run: dotnet restore
       - name: Check code format (editorconfig)
         run: dotnet format --verify-no-changes
-      - name: Build (Release)
-        run: dotnet build --no-restore -c Release
       - name: Test (Release)
         run: dotnet test -c Release --no-build --verbosity normal
+      - name: Publish executable (Release)
+        run: dotnet publish -c Release --framework net6.0 --self-contained false --runtime linux-x64 -p:PublishTrimmed=false -p:PublishSingleFile=true -p:PublishReadyToRun=true src/custom-data.client/custom-data.client.csproj
+      - name: Get Version
+        run: src/custom-data.client/bin/Release/net6.0/linux-x64/publish/custom-data.client

@@ -5,7 +5,7 @@ namespace github.com.marklechtermann.customdata;
 
 public class CustomDataService
 {
-    private string _data = "Hello World!";
+    private readonly string _data = "Hello World!";
 
     public CustomDataService()
     {
@@ -21,7 +21,7 @@ public class CustomDataService
             a.GetCustomAttributesData().ToList().ForEach(ca =>
             {
                 builder.Append(ca.AttributeType.Name);
-                builder.Append(":");
+                builder.Append(':');
                 builder.AppendLine(ca.ToString());
             });
         });
