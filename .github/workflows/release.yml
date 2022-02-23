@@ -1,22 +1,27 @@
-name: Release
+name: ci
 
 on:
   workflow_dispatch:
 
 jobs:
-  release:
-    name: "Release"
+  build:
     runs-on: windows-2022
-    steps:
-      - name: "Build & test"
-        run: |
-          echo "done!"
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
+    steps:
+      - uses: actions/checkout@v2
         with:
-          repo_token: "${{ secrets.GHF }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Development Build"
-          files: |
-            test.txt
+          fetch-depth: 0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Check code format (editorconfig)
+        run: dotnet format --verify-no-changes
+      - name: Test (Release)
+        run: dotnet test -c Release --no-build --verbosity normal
+      - name: Publish executable (Release)
+        run: dotnet publish -c Release --framework net6.0 --self-contained false --runtime linux-x64 -p:PublishTrimmed=false -p:PublishSingleFile=true -p:PublishReadyToRun=true src/custom-data.client/custom-data.client.csproj
+      - name: Get Version
+        run: src/custom-data.client/bin/Release/net6.0/linux-x64/publish/custom-data.client
