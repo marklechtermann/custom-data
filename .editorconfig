@@ -149,7 +149,7 @@ csharp_preserve_single_line_blocks = true
 ###############################
 # https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers?view=vs-2022
 
-dotnet_analyzer_diagnostic.severity = suggestion
+dotnet_analyzer_diagnostic.severity = warning
 
 dotnet_diagnostic.IDE0058.severity = none # Remove unnecessary expression value
 dotnet_diagnostic.IDE0046.severity = none # Use conditional expression for return

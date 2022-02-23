@@ -19,8 +19,8 @@ jobs:
           dotnet-version: 6.0.x
       - name: Restore dependencies
         run: dotnet restore
-      - name: Check code format (editorconfig)
-        run: dotnet format --verify-no-changes
+      # - name: Check code format (editorconfig)
+      #   run: dotnet format --verify-no-changes
       - name: Test (Release)
         run: dotnet test -c Release --no-build --verbosity normal
       - name: Publish executable (Release)
