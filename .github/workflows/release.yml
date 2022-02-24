@@ -21,7 +21,7 @@ jobs:
         run: dotnet --version
       - name: Restore dependencies
         run: dotnet restore
-      - name: Restore dependencies
+      - name: Build
         run: dotnet build -c Release
       - name: Check code format (editorconfig)
         run: dotnet format --verify-no-changes
@@ -30,4 +30,8 @@ jobs:
       - name: Publish executable (Release)
         run: dotnet publish -c Release --framework net6.0 --self-contained false --runtime linux-x64 -p:PublishTrimmed=false -p:PublishSingleFile=true -p:PublishReadyToRun=true src/custom-data.client/custom-data.client.csproj
       - name: Get Version
-        run: src/custom-data.client/bin/Release/net6.0/linux-x64/publish/custom-data.client
+        run: src/custom-data.client/bin/Release/net6.0/linux-x64/publish/custom-data.client --version
+      - name: Nuget pack
+        run: dotnet pack -c Release
+      - name: Nuget push
+        run: dotnet nuget push bin/Release/*.nupkg --api-key ${{ secrets.NUGET }} --source https://api.nuget.org/v3/index.json
