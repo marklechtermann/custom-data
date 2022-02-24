@@ -44,4 +44,5 @@ jobs:
         run: dotnet pack -c Release src/custom-data/custom-data.csproj
 
       - name: Nuget push
-        run: dotnet nuget push src/custom-data/bin/Release/*.nupkg --api-key ${{ secrets.NUGET }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET }} --source https://api.nuget.org/v3/index.json
+        working-directory: src/custom-data/bin/Release/
