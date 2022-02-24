@@ -46,9 +46,16 @@ jobs:
         with:
           files: src/custom-data.client/bin/Release/net6.0/linux-x64/publish/customdata
 
-      - name: Nuget pack
+      - name: Nuget pack library
         run: dotnet pack -c Release src/custom-data/custom-data.csproj
 
-      - name: Nuget push
+      - name: Nuget push library
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET }} --source https://api.nuget.org/v3/index.json
         working-directory: src/custom-data/bin/Release/
+
+      - name: Nuget pack tool
+        run: dotnet pack -c Release src/custom-data/custom-data.csproj
+
+      - name: Nuget push tool
+        run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET }} --source https://api.nuget.org/v3/index.json
+        working-directory: src/custom-data.client/bin/Release/
