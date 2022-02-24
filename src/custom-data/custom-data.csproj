@@ -10,6 +10,19 @@
     <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
     <MinVerVerbosity Condition="'$(Configuration)' == 'Debug'">detailed</MinVerVerbosity>
     <MinVerTagPrefix>v</MinVerTagPrefix>
+
+
+    <Version>1.0.0</Version>
+    <Authors>Mark Lechtermann</Authors>
+    <Description>Json.NET is a popular high-performance JSON framework for .NET</Description>
+    <Company></Company>
+    <Product>custom-data</Product>
+    <Summary>Json.NET is a popular high-performance JSON framework for .NET</Summary>
+    <IsPackable>true</IsPackable>
+    <PackageProjectUrl>https://www.newtonsoft.com/json</PackageProjectUrl>
+    <PackageId>Mark.Lechtermann.Test</PackageId>
+    <PackageTags>json</PackageTags>
+
   </PropertyGroup>
 
   <ItemGroup>
