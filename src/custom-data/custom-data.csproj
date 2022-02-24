@@ -9,6 +9,7 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
     <MinVerVerbosity Condition="'$(Configuration)' == 'Debug'">detailed</MinVerVerbosity>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
 
   <ItemGroup>
