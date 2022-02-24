@@ -1,4 +1,7 @@
 {
     "omnisharp.enableRoslynAnalyzers": true,
-    "omnisharp.enableEditorConfigSupport": true
+    "omnisharp.enableEditorConfigSupport": true,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///home/markl/git/github/custom-data/.github/workflows/build.yml"
+    }
 }
