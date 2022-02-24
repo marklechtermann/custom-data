@@ -55,4 +55,4 @@ jobs:
 
       - name: Nuget push tool
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET }} --source https://api.nuget.org/v3/index.json
-        working-directory: src/custom-data.client/bin/Release/net6.0/linux-x64/publish/
+        working-directory: src/custom-data.client/bin/Release/net6.0/linux-x64/publish
