@@ -19,30 +19,36 @@ jobs:
         with:
           dotnet-version: 6.0.102
 
-      - name: Get .net version
-        run: dotnet --version
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: test.txt
 
-      - name: Restore dependencies
-        run: dotnet restore
+      # - name: Get .net version
+      #   run: dotnet --version
 
-      - name: Build
-        run: dotnet build -c Release
+      # - name: Restore dependencies
+      #   run: dotnet restore
 
-      - name: Check code format (editorconfig)
-        run: dotnet format --verify-no-changes
+      # - name: Build
+      #   run: dotnet build -c Release
 
-      - name: Test (Release)
-        run: dotnet test -c Release --no-build --verbosity normal
+      # - name: Check code format (editorconfig)
+      #   run: dotnet format --verify-no-changes
 
-      - name: Publish executable (Release)
-        run: dotnet publish -c Release --framework net6.0 --self-contained false --runtime linux-x64 -p:PublishTrimmed=false -p:PublishSingleFile=true -p:PublishReadyToRun=true src/custom-data.client/custom-data.client.csproj
+      # - name: Test (Release)
+      #   run: dotnet test -c Release --no-build --verbosity normal
 
-      - name: Get Version
-        run: src/custom-data.client/bin/Release/net6.0/linux-x64/publish/custom-data.client --version
+      # - name: Publish executable (Release)
+      #   run: dotnet publish -c Release --framework net6.0 --self-contained false --runtime linux-x64 -p:PublishTrimmed=false -p:PublishSingleFile=true -p:PublishReadyToRun=true src/custom-data.client/custom-data.client.csproj
 
-      - name: Nuget pack
-        run: dotnet pack -c Release src/custom-data/custom-data.csproj
+      # - name: Get Version
+      #   run: src/custom-data.client/bin/Release/net6.0/linux-x64/publish/custom-data.client --version
 
-      - name: Nuget push
-        run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET }} --source https://api.nuget.org/v3/index.json
-        working-directory: src/custom-data/bin/Release/
+      # - name: Nuget pack
+      #   run: dotnet pack -c Release src/custom-data/custom-data.csproj
+
+      # - name: Nuget push
+      #   run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET }} --source https://api.nuget.org/v3/index.json
+      #   working-directory: src/custom-data/bin/Release/
