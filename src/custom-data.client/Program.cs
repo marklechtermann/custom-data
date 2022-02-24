@@ -1,6 +1,10 @@
 using System.Reflection;
 using github.com.marklechtermann.customdata;
 
+if (1 == 1)
+    Console.WriteLine("LK");
+
+
 if (args.Length > 0 && string.Equals(args[0], "--version", StringComparison.OrdinalIgnoreCase))
 {
     var versionAttribute = typeof(Program).Assembly.GetCustomAttributes(typeof(AssemblyInformationalVersionAttribute), true).OfType<AssemblyInformationalVersionAttribute>().FirstOrDefault();
