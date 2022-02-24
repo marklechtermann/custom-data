@@ -15,6 +15,7 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
     <MinVerVerbosity Condition="'$(Configuration)' == 'Debug'">detailed</MinVerVerbosity>
+    <PackageTags>demo;test</PackageTags>
     <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
   <ItemGroup>
