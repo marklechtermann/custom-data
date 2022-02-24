@@ -19,7 +19,7 @@
     <PackageProjectUrl>https://github.com/marklechtermann/custom-data</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageId>marklechtermanntest</PackageId>
-    <PackageTags>COM;OLE;tlbexp;TypeConverter</PackageTags>
+    <PackageTags>demo;test</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
