@@ -17,6 +17,8 @@ if (args.Length > 0 && string.Equals(args[0], "--version", StringComparison.Ordi
     Environment.Exit(0);
 }
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
